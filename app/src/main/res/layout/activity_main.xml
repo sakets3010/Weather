@@ -10,17 +10,20 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/weather"
         android:src="@drawable/ic_partly_cloudy_day"
         app:layout_constraintBottom_toTopOf="@+id/logo_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="@string/weather" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/logo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:text="@string/weather"
+        android:textColor="@color/darkText"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
