@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="weather">Weather</string>
+    <string name="weather_alt">Weather Logo</string>
 </resources>
