@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="weather_alt">Weather Logo</string>
+    <string name="current_weather_title">Current weather</string>
+    <string name="weather_history_title">Weather history</string>
 </resources>
