@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="currentWeather"
-            type="com.example.weather.CurrentWeatherFragment.CurrentWeather" />
+            name="currentWeatherViewModel"
+            type="com.example.weather.screens.currentWeather.CurrentWeatherViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,29 +15,64 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/currentLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/current_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/weather_alt"
             android:src="@drawable/ic_partly_cloudy_day"
-            app:layout_constraintBottom_toTopOf="@+id/currentToHistoryButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/currentToHistoryButton"
+        <TextView
+            android:id="@+id/temperature_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{currentWeatherViewModel.temperature}"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_logo" />
+
+        <TextView
+            android:id="@+id/weather_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{currentWeatherViewModel.weatherCondition}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature_text" />
+
+        <TextView
+            android:id="@+id/location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{currentWeatherViewModel.location}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather_condition" />
+
+        <Button
+            android:id="@+id/current_to_history_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkBackground"
             android:fontFamily="@font/roboto"
-            android:text="@{currentWeather.historyButtonText}"
-            android:textColor="@color/darkText"
-            android:textSize="@dimen/logo_text_size"
+            android:onClick="@{() -> currentWeatherViewModel.onToWeatherHistory()}"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/to_weather_history"
+            android:textColor="@color/brightText"
+            android:textSize="@dimen/button_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currentLogo" />
+            app:layout_constraintTop_toBottomOf="@+id/location_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

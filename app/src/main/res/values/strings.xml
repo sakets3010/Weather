@@ -3,4 +3,6 @@
     <string name="weather_alt">Weather Logo</string>
     <string name="current_weather_title">Current weather</string>
     <string name="weather_history_title">Weather history</string>
+    <string name="to_current_weather">Current Weather</string>
+    <string name="to_weather_history">Weather History</string>
 </resources>
