@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.weather.R
 import com.example.weather.databinding.FragmentCurrentWeatherBinding
@@ -33,7 +33,7 @@ class CurrentWeatherFragment : Fragment() {
 
         requireActivity().title = getString(R.string.current_weather_title)
 
-        viewModel = ViewModelProviders.of(this).get(CurrentWeatherViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CurrentWeatherViewModel::class.java)
 
         binding.currentWeatherViewModel = viewModel
         binding.lifecycleOwner = this

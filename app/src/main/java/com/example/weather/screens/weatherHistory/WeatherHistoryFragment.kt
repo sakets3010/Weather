@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.weather.R
 import com.example.weather.databinding.FragmentWeatherHistoryBinding
@@ -29,7 +28,7 @@ class WeatherHistoryFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_weather_history, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(WeatherHistoryViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WeatherHistoryViewModel::class.java)
 
         binding.weatherHistoryViewModel = viewModel
 
