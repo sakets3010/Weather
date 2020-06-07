@@ -13,4 +13,7 @@ interface WeatherDao {
 
     @Insert
     fun insertWeatherData(weather: Weather)
+
+    @Query("DELETE FROM weather_data")
+    fun clearData()
 }
