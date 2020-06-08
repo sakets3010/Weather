@@ -14,6 +14,7 @@ import com.example.weather.R
 import com.example.weather.databinding.FragmentWeatherHistoryBinding
 import com.example.weather.helper.WeatherDatabase
 import com.example.weather.helper.WeatherListAdapter
+import com.example.weather.helper.WeatherRepository
 
 /**
  * A simple [Fragment] subclass.
@@ -41,14 +42,14 @@ class WeatherHistoryFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = WeatherDatabase.getInstance(application).weatherDao
-        val viewModelFactory = WeatherHistoryViewModelFactory(dataSource, application)
+        val repo = WeatherRepository(dataSource)
+        val viewModelFactory = WeatherHistoryViewModelFactory(repo, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(WeatherHistoryViewModel::class.java)
         binding.weatherHistoryViewModel = viewModel
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
-                binding.weatherList.smoothScrollToPosition(0)
             }
         })
 

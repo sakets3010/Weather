@@ -5,15 +5,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.weather.helper.Weather
-import com.example.weather.helper.WeatherDao
+import com.example.weather.helper.WeatherRepository
 import kotlinx.coroutines.*
 
 class WeatherHistoryViewModel(
-    private val database: WeatherDao,
+    private val repository: WeatherRepository,
     application: Application
 ): AndroidViewModel(application) {
 
-    val weatherData = database.getAllWeatherData()
+    val weatherData = repository.allWeatherData
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -24,31 +24,23 @@ class WeatherHistoryViewModel(
 
     fun setTestData() {
         uiScope.launch {
-            add()
-        }
-    }
-
-    private suspend fun add() {
-        withContext(Dispatchers.IO) {
-            database.insertWeatherData(
-                Weather(
-                    System.currentTimeMillis(),
-                    26.00,
-                    "Sunny"
+            withContext(Dispatchers.IO) {
+                repository.insertWeatherData(
+                    Weather(
+                        System.currentTimeMillis(),
+                        26.00,
+                        "Sunny"
+                    )
                 )
-            )
+            }
         }
     }
 
     fun clearTestData() {
         uiScope.launch {
-            clear()
-        }
-    }
-
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clearData()
+            withContext(Dispatchers.IO) {
+                repository.clearWeatherData()
+            }
         }
     }
 
